@@ -1,22 +1,23 @@
+# STILL TO DO
+# make windows teleport to random places
+# have original window actually close when closed - make it look like it at least
+
 import tkinter as tk
-import random
+from random import randint
 
-class MainWindow(tk.Tk):
-    def __init__(self):
-        tk.Tk.__init__(self)
-        self.title("Virus")
-        self.geometry("300x200")
-        self.protocol("WM_DELETE_WINDOW", self.on_close)
+root = tk.Tk()
+root.geometry = ('400x300')
+root.title('Virus')
 
-    def on_close(self):
-        self.open_new_windows()
+def create():
+    root = tk.Tk()
+    root.geometry = ('400x300')
+    root.title('Virus')
+    root.protocol("WM_DELETE_WINDOW", create)
+    root = tk.Tk()
+    root.geometry = ('400x300')
+    root.title('Virus')
+    root.protocol("WM_DELETE_WINDOW", create)
 
-    def open_new_windows(self):
-        for _ in range(2):
-            new_window = tk.Toplevel(self)
-            new_window.title("New Window")
-            new_window.geometry(f"{random.randint(100, 400)}x{random.randint(100, 300)}")
-
-if __name__ == "__main__":
-    main_window = MainWindow()
-    main_window.mainloop()
+root.protocol("WM_DELETE_WINDOW", create)
+root.mainloop()
